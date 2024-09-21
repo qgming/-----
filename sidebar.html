@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Sidepanel</title>
+    <meta charset="UTF-8" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background: white;
+        overflow-x: hidden; /* 禁止左右滑动 */
+        padding-right: 10px;
+      }
+
+      #searchBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        background-color: #f5f5f5;
+        position: fixed; /* 固定searchBox */
+        top: 0;
+        left: 0;
+        z-index: 1000;
+      }
+
+      .allBookmark {
+        user-select: none;
+      }
+
+      #bookmarkCount {
+        font-size: 20px;
+        margin-left: 10px;
+      }
+
+      #showBookmark {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        border-radius: 16px;
+        background-color: #d2e0fb;
+      }
+
+      #collectBookmark {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 10px;
+        margin-top: 60px;
+      }
+
+      .pinned-item {
+        display: flex;
+        align-content: center;
+        padding: 10px 30px;
+        margin: 5px;
+        background-color: #f5f5f5;
+        /* border: 1px solid #d2e0fb; */
+        border-radius: 12px;
+        font-size: 0;
+        user-select: none;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 添加阴影过渡动画 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加立体阴影 */
+      }
+
+      .pinned-item:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 鼠标划过时增加阴影深度 */
+      }
+
+      .pinned-icon {
+        width: 30px;
+      }
+
+      .delete-button {
+        width: 50px;
+        height: 50px;
+        background-color: black;
+      }
+
+      .bookmark-list {
+        margin-left: 10px;
+      }
+
+      .bookmark-item {
+        margin-top: 10px;
+      }
+
+      .bookmark-item a {
+        display: flex;
+        height: 20px;
+        padding: 10px;
+        align-items: center;
+        text-decoration: none;
+        background-color: #f5f5f5;
+        border-radius: 12px;
+        color: #333;
+        font-weight: 450;
+        font-size: 14px;
+        white-space: nowrap; /* 防止文字换行 */
+        overflow: hidden; /* 隐藏溢出的内容 */
+        text-overflow: ellipsis; /* 溢出部分显示省略号 */
+        transition: background-color 0.5s ease, box-shadow 0.3s ease; /* 添加阴影过渡动画 */
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .bookmark-item a:hover {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        background-color: #d1d1d1;
+        border-radius: 12px;
+        padding: 10px;
+      }
+
+      .bookmark-icon,
+      .folder-icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+      }
+
+      .action-buttons {
+        display: flex;
+        margin-left: auto;
+        position: absolute;
+        right: 15px;
+      }
+      .action-buttons button {
+        width: 38px;
+        height: 24px;
+        margin: 2px;
+        border-radius: 6px;
+        font-size: 12px;
+        color: gray;
+        background-color: #f5f5f5;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* 自定义滚动条样式 */
+      body::-webkit-scrollbar {
+        /* width: 8px; */
+        display: none;
+      }
+      body::-webkit-scrollbar-track {
+        background: white; /* 修改滚动条轨道颜色 */
+      }
+      body::-webkit-scrollbar-thumb {
+        background: #f5f5f5; /* 修改滚动条滑块颜色 */
+        border-radius: 4px;
+      }
+      body::-webkit-scrollbar-thumb:hover {
+        background: #d1d1d1; /* 修改滚动条滑块悬停颜色 */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="searchBox">
+      <div class="allBookmark">
+        <span id="bookmarkCount"></span>
+        <span>书签</span>
+      </div>
+      <div id="showBookmark"></div>
+    </div>
+    <div id="collectBookmark"></div>
+    <div id="bookmarkContainer"></div>
+    <!-- 添加一个容器用于放置书签 -->
+    <script src="sidebar.js"></script>
+  </body>
+</html>
